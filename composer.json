@@ -17,5 +17,6 @@
   },
   "autoload": {
     "psr-4": { "BasisInstaller\\": "src" }
-  }
+  },
+  "bin": ["basis"]
 }
