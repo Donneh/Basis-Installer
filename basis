@@ -1,0 +1,14 @@
+#! /usr/bin/env php
+
+<?php
+
+require "vendor/autoload.php";
+
+use BasisInstaller\NewCommand;
+use Symfony\Component\Console\Application;
+
+$app = new Application("Basis Installer", '1.0');
+
+$app->add(new NewCommand());
+
+$app->run();
