@@ -6,6 +6,7 @@ use GuzzleHttp\ClientInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\{InputArgument, InputInterface};
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 class NewCommand extends Command
 {
@@ -36,6 +37,12 @@ class NewCommand extends Command
         $this->download($file = $this->makeFileName())
             ->extract($file, $directory)
             ->cleanUp($file);
+
+        $composer = $this->findComposer();
+        $process = new Process(["{$composer} install"], $directory);
+        $process->run(function ($type, $line) use ($output) {
+            $output->writeln($line);
+        });
 
         $output->writeln($this->formatMessage("info", "Application is ready."));
     }
@@ -83,5 +90,14 @@ class NewCommand extends Command
     private function formatMessage($type, $message)
     {
         return "<{$type}>" . $message . "</{$type}>";
+    }
+
+    protected function findComposer()
+    {
+        if (file_exists(getcwd().'/composer.phar')) {
+            return '"'.PHP_BINARY.'" composer.phar';
+        }
+
+        return 'composer';
     }
 }
