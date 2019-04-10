@@ -1,4 +1,16 @@
 {
+  "name": "donneh/basis-installer",
+  "description": "Installer for basis framework",
+  "keywords": ["basis-framework"],
+  "homepage": "https://github.com/Donneh/Basis-Installer",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Donny van Walsem",
+      "email": "donnehvw@gmail.com",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "symfony/console": "~2.0",
     "guzzlehttp/guzzle": "^6.3"
