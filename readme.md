@@ -20,7 +20,7 @@ Make new instance of the framework
 php basis new projectname
 ```
 
-This will install Basis in a directory with the given name.
+This will install Basis in a directory with the given name!
 
 
 ## Built With
